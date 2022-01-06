@@ -1,0 +1,39 @@
+.bookpage {
+  .book-file {
+    padding: calc( $base-space * 2 );
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc( $base-space * 2 ) calc( $base-space * 2 );
+    background-image: linear-gradient(to top right, $colored-dark, $secondary-color);
+    border-radius: .3rem;
+    border: 1px solid $colored-light;
+
+    .book-infos {
+      .book-infos-bloc {
+        display: flex;
+        justify-content: space-between;
+        padding: calc($base-space / 2) $base-space;
+        background-color: rgba($colored-light, .4);
+        @include primary-font(400);
+        &:not(:last-child) {
+          margin-bottom: $base-space;
+        }
+        .book-infos-bloc-label {
+          display: inline-block;
+          margin-right: $base-space;
+          font-weight: 200;
+        }
+      }
+      &.book-abstract {
+        width: 100%;
+        .book-infos-bloc {
+          flex-direction: column;
+          max-width: 900px;
+          .book-infos-bloc-label {
+            margin-bottom: calc( $base-space / 2 );
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+
+<body>
+  <%- include('partials/header') %>
+  <main class="bookpage">
+    <h2><%= book.title %></h2>
+    <article class="book-file">
+      <article class="book-card">
+        <div class="book-card-cover">
+          <img src="/img/<%= book.cover %>.jpg" alt="image de couverture du livre <%= book.title %>">
+          <div class="book-card-title">
+            <h3>
+              <%= book.title %>
+            </h3>
+          </div>
+          <div class="book-card-author">
+            <h4>
+              <%= book.author_f_name %> <%= book.author_l_name %>
+            </h4>
+          </div>
+          <div class="book-card-edition">
+            <h5>
+              <%= book.edition_name %>
+            </h5>
+          </div>
+        </div>
+      </article>
+      <div class="book-infos">
+        <div class="book-infos-bloc">
+          <span class="book-infos-bloc-label">Titre</span>
+          <span class="book-infos-bloc-value"><%= book.title %></span>
+        </div>
+        <div class="book-infos-bloc">
+          <span class="book-infos-bloc-label">Auteur⸱e</span>
+          <span class="book-infos-bloc-value"><%= book.author_f_name %> <%= book.author_l_name %></span>
+        </div>
+        <div class="book-infos-bloc">
+          <span class="book-infos-bloc-label">Année de parution</span>
+          <span class="book-infos-bloc-value"><%= book.par_year %></span>
+        </div>
+        <div class="book-infos-bloc">
+          <span class="book-infos-bloc-label">Catégorie</span>
+          <span class="book-infos-bloc-value"><%= book.category_name %></span>
+        </div>
+        <div class="book-infos-bloc">
+          <span class="book-infos-bloc-label">Maison d'édition</span>
+          <span class="book-infos-bloc-value"><%= book.edition_name %></span>
+        </div>
+      </div>
+      <div class="book-infos book-abstract">
+        <div class="book-infos-bloc">
+          <span class="book-infos-bloc-label">Résumé</span>
+          <span class="book-infos-bloc-value"><%= book.abstract %></span>
+        </div>
+      </div>
+    </article>
+    
+  </main>
+</body>
+
+</html>

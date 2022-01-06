@@ -7,7 +7,7 @@ const dataMapper = {
     return (await client.query(query)).rows;
   },
   getOneBook: async (id) => {
-    const query = `SELECT * FROM book WHERE book.id=${id};`;
+    const query = `SELECT * FROM book JOIN edition ON book.edit_id=edition.id JOIN category ON book.cat_id=category.id WHERE book.id=${id};`;
     return (await client.query(query)).rows[0];
   }
 };
