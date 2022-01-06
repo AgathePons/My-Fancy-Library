@@ -8,26 +8,28 @@
     <h2>homepage</h2>
     <div class="books-list">
       <% for(book of books) { %>
-      <article class="book-card">
-        <div class="book-card-cover">
-          <img src="/img/<%= book.cover %>.jpg" alt="image de couverture du livre <%= book.title %>">
-          <div class="book-card-title">
-            <h3>
-              <%= book.title %>
-            </h3>
+      <a class="book-card-link" href="/book/<%= book.id %>">
+        <article class="book-card">
+          <div class="book-card-cover">
+            <img src="/img/<%= book.cover %>.jpg" alt="image de couverture du livre <%= book.title %>">
+            <div class="book-card-title">
+              <h3>
+                <%= book.title %>
+              </h3>
+            </div>
+            <div class="book-card-author">
+              <h4>
+                <%= book.author_f_name %> <%= book.author_l_name %>
+              </h4>
+            </div>
+            <div class="book-card-edition">
+              <h5>
+                <%= book.edition_name %>
+              </h5>
+            </div>
           </div>
-          <div class="book-card-author">
-            <h4>
-              <%= book.author_f_name %> <%= book.author_l_name %>
-            </h4>
-          </div>
-          <div class="book-card-edition">
-            <h5>
-              <%= book.author_f_name %>
-            </h5>
-          </div>
-        </div>
-      </article>
+        </article>
+      </a>
       <% } %>
     </div>
 

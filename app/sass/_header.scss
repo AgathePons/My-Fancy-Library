@@ -1,6 +1,6 @@
 header {
   background: linear-gradient(to right, $primary-color, $secondary-color);
-  padding: $base-space;
+  padding: $base-space calc( $base-space *2 );
   margin-bottom: $base-space;
   box-shadow: 0 0 15px lighten($colored-dark, 20);
 

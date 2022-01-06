@@ -1,11 +1,20 @@
 .homepage {
   h2 {
-    margin-bottom: calc( $base-space * 2 );
+    margin-bottom: calc($base-space * 2);
   }
+
   .books-list {
     display: flex;
     flex-wrap: wrap;
     gap: calc($base-space * 2) calc($base-space * 2);
   }
-}
 
+  .book-card-link {
+    box-shadow: -3px 3px 10px rgba($colored-dark, 0.5);
+    transition: box-shadow .3s $ease-transition;
+    &:hover {
+      box-shadow: -10px 5px 30px rgba($colored-dark, 0.5);
+    }
+  }
+
+}

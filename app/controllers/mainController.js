@@ -5,6 +5,8 @@ const mainController = {
   homePage: async (_req, res, next) => {
     try {
       const books = await dataMapper.getAllBooks();
+      // !
+      console.log(books);
       if(books) {
         res.render('homepage', {
           books
