@@ -1,3 +1,26 @@
 header {
-  
+  background: linear-gradient(to right, $primary-color, $secondary-color);
+  padding: $base-space;
+  margin-bottom: $base-space;
+  box-shadow: 0 0 15px lighten($colored-dark, 20);
+
+  .nav {
+    .navlist {
+      display: flex;
+      align-items: flex-end;
+      .navlist-item {
+        & > a {
+          @include primary-font(400);
+          color: $colored-light;
+        }
+        &--main {
+          flex-grow: 1;
+        }
+        &:not(:last-child) {
+          margin-right: $base-space;
+        }
+      }
+      
+    }
+  }
 }

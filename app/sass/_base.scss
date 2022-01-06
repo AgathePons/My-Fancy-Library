@@ -1,3 +1,18 @@
-body {
-  background-color: $primary-color;
+html, body {
+  background: linear-gradient(to bottom left, #F9F2EA, #D6A1A1);
+}
+
+main {
+  margin: $base-space;
+}
+
+h1 {
+  @include primary-font(700);
+  font-size: 1.5rem;
+  color: $colored-light;
+}
+
+h2 {
+  @include primary-font(200);
+  font-size: 1.5rem;
 }
