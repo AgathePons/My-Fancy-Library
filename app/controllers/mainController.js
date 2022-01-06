@@ -2,8 +2,20 @@ const dataMapper = require('../dataMapper');
 
 
 const mainController = {
-  homePage: (_req, res) => {
-    res.render('homepage');
+  homePage: async (_req, res, next) => {
+    try {
+      const books = await dataMapper.getAllBooks();
+      if(books) {
+        res.render('homepage', {
+          books
+        });
+      } else {
+        next();
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      res.status(500).send('There is an error 500!');
+    }
   },
   // TODO examples (not working)
   somePageWithListOfThings: async (req, res, next) => {

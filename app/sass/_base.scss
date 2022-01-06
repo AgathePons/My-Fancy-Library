@@ -1,9 +1,13 @@
 html, body {
-  background: linear-gradient(to bottom left, #F9F2EA, #D6A1A1);
+  background-image: linear-gradient(to bottom left, #F9F2EA, #D6A1A1);
+  background-color: $colored-light;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
 }
 
 main {
-  margin: $base-space;
+  margin: calc($base-space * 2);
 }
 
 h1 {
@@ -15,4 +19,47 @@ h1 {
 h2 {
   @include primary-font(200);
   font-size: 1.5rem;
+}
+
+.book-card {
+  margin-bottom: $base-space;
+  .book-card-cover {
+    position: relative;
+    width: 12rem;
+    height: 18rem;
+    //transform: skewY(-10deg);
+    background: linear-gradient($secondary-color, $primary-color);
+    border-radius: .3rem;
+    border: 1px solid $colored-light;
+    box-shadow: -10px 5px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    & > img {
+      width: 113%;
+      margin-left: -7%;
+      margin-top: -20%;
+    }
+    .book-card-title {
+      position: absolute;
+      top: 15%;
+      width: 100%;
+      background-color: rgba($colored-light, .5);
+      & > h3 {
+        padding: calc( $base-space / 2 );
+        @include primary-font(400);
+        color: $colored-dark;
+        text-align: center;
+      }
+    }
+    .book-card-author {
+      position: absolute;
+      top: 5%;
+      width: 100%;
+      & > h4 {
+        @include primary-font(700);
+        color: $colored-light;
+        text-shadow: 0 0 5px (rgba($colored-dark, .8));
+        text-align: center;
+      }
+    }
+  }
 }
