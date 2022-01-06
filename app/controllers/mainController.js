@@ -7,7 +7,8 @@ const mainController = {
       const books = await dataMapper.getAllBooks();
       if(books) {
         res.render('homepage', {
-          books
+          books, 
+          title: 'Tous mes livres <3'
         });
       } else {
         next();
