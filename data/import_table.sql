@@ -36,7 +36,6 @@ CREATE TABLE IF NOT EXISTS "user" (
 
 CREATE TABLE IF NOT EXISTS "book" (
   "id" serial PRIMARY KEY,
-  "isbn" INTEGER NOT NULL,
   "title" TEXT NOT NULL,
   "abstract" TEXT NOT NULL,
   "year" INTEGER NOT NULL,
