@@ -10,9 +10,11 @@ const app = express();
 app.set('views', './app/views');
 app.set('view engine', 'ejs');
 
+app.use(express.urlencoded({extended: true}));
+
 app.use(session({
   // doc express-session : npmjs.com/package/express-session
-  secret: 'MyF4ncyL!br4ry!@',
+  secret: process.env.SECRET_KEY,
   resave: true,
   saveUninitialized: true,
   cookie : {

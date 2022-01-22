@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS "user" (
   "firstname" TEXT NOT NULL,
   "lastname" TEXT NOT NULL,
   "mail" TEXT NOT NULL,
-  "password" TEXT NOT NULL
+  "password" TEXT NOT NULL,
+  "role" TEXT DEFAULT 'user'
 );
 
 CREATE TABLE IF NOT EXISTS "book" (
