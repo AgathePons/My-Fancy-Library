@@ -78,3 +78,5 @@ Category.belongsToMany(Book, {
   foreignKey: 'book_id',
   otherKey: 'category_id'
 });
+
+module.exports = {Author, Book, Category, Comment, Edition, User};
