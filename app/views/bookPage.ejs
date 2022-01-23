@@ -40,12 +40,14 @@
           <span class="book-infos-bloc-label">Année de parution</span>
           <span class="book-infos-bloc-value"><%= book.year %></span>
         </div>
-        <div class="book-infos-bloc">
-          <span class="book-infos-bloc-label">Catégorie</span>
+        <div class="book-infos-bloc book-infos-bloc--category">
+          <span class="book-infos-bloc-label">Catégorie(s)</span>
+          <div class="book-infos-bloc-sub">
           <!-- For each category -->
           <% for(const category of book.categories) { %>
           <span class="book-infos-bloc-value"><%= category.name %></span>
           <% } %>
+        </div>
         </div>
         <div class="book-infos-bloc">
           <span class="book-infos-bloc-label">Maison d'édition</span>
@@ -53,7 +55,9 @@
         </div>
         <div class="book-infos-bloc">
           <span class="book-infos-bloc-label">Ce livre a </span>
-          <span class="book-infos-bloc-value"><%= book.comments.length %> commentaires</span>
+          <span class="book-infos-bloc-value">
+            <%= book.comments.length %> commentaire<%= book.comments.length > 1 ? 's' : '' %>
+          </span>
         </div>
       </div>
       <div class="book-infos book-abstract">
@@ -65,6 +69,7 @@
     </article>
     
   </main>
+  <%- include('partials/footer') %>
 </body>
 
 </html>

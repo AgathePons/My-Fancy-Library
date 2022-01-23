@@ -1,36 +1,59 @@
 .bookpage {
   .book-file {
-    padding: calc( $base-space * 2 );
+    padding: $base-space;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: calc( $base-space * 2 ) calc( $base-space * 2 );
+    gap: $base-space $base-space;
     background-image: linear-gradient(to top right, $colored-dark, $secondary-color);
     border-radius: .3rem;
     border: 1px solid $colored-light;
 
     .book-infos {
+      width: 100%;
+
       .book-infos-bloc {
         display: flex;
         justify-content: space-between;
-        padding: calc($base-space / 2) $base-space;
+        padding: calc($base-space * .5);
         background-color: rgba($colored-light, .4);
         @include primary-font(400);
+
         &:not(:last-child) {
           margin-bottom: $base-space;
         }
+
         .book-infos-bloc-label {
           display: inline-block;
           margin-right: $base-space;
           font-weight: 200;
         }
+
+        &.book-infos-bloc--category {
+          .book-infos-bloc-sub {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: calc( $base-space * .5 ) calc( $base-space * .5 );
+            .book-infos-bloc-value {
+              border-radius: .3rem;
+              padding: calc( $base-space * .5 ) $base-space;
+              background: linear-gradient(to right, darken($primary-color, 10), $secondary-color);
+              color: $light;
+              font-weight: 700;
+              
+            }
+          }
+        }
       }
+
       &.book-abstract {
         width: 100%;
+
         .book-infos-bloc {
           flex-direction: column;
-          max-width: 900px;
           .book-infos-bloc-label {
-            margin-bottom: calc( $base-space / 2 );
+            margin-bottom: calc($base-space * .5);
           }
         }
       }

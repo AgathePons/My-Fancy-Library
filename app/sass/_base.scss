@@ -4,8 +4,8 @@ html, body {
   linear-gradient(to bottom left, #F9F2EA, #ca6fc3);
   
   background-attachment: fixed;
-  width: 100vw;
-  height: 100vh;
+  //width: 100vw;
+  //height: 100vh;
 }
 
 main {
@@ -22,101 +22,4 @@ h2 {
   margin-bottom: calc($base-space * 2);
   @include primary-font(200);
   font-size: 1.5rem;
-}
-
-.book-card {
-  
-  .book-card-cover {
-    position: relative;
-    width: 12rem;
-    height: 18rem;
-    //transform: skewY(-10deg);
-    background: linear-gradient($secondary-color, $primary-color);
-    border-radius: .3rem;
-    border: 1px solid $colored-light;
-    overflow: hidden;
-
-    & > img {
-      width: 113%;
-      margin-left: -7%;
-      margin-top: -20%;
-    }
-    .fav-link {
-      position: absolute;
-      z-index: 2;
-      top: 5px;
-      right: -30px;
-      opacity: 0;
-      padding: 4px;
-      border-radius: calc( 25px + 4px * 2 );
-      border: 1px solid $colored-light;
-      background-color: rgba($colored-dark, .6);
-      transition: all .3s $ease-transition;
-      & > svg {
-        fill: $colored-light;
-        width: 22px;
-        height: 22px;
-      }
-    }
-    .book-card-title {
-      position: absolute;
-      top: 15%;
-      width: 100%;
-      background-color: rgba($colored-light, .5);
-      & > h3 {
-        padding: calc( $base-space / 2 );
-        @include primary-font(400);
-        color: $colored-dark;
-        text-align: center;
-      }
-    }
-    .book-card-author {
-      position: absolute;
-      top: 5%;
-      width: 100%;
-      & > h4 {
-        @include primary-font(700);
-        color: $colored-light;
-        text-shadow: 0 0 5px (rgba($colored-dark, .8));
-        text-align: center;
-      }
-    }
-    .book-card-edition {
-      position: absolute;
-      bottom: 10%;
-      width: 100%;
-      @include primary-font(700);
-      color: lighten($primary-color, 10);
-      text-shadow: 0 0 3px $colored-dark;
-      text-align: center;
-      &:before, &:after {
-        position: absolute;
-        bottom: 0;
-        content: "ᚘ";
-        font-weight: 200;
-        display: inline-block;
-      }
-      &:before {
-        transform: rotate(-90deg);
-        left: 2%;
-      }
-      &:after {
-        transform: rotate(90deg);
-        right: 2%;
-      }
-      & > h5 {
-        width: 75%;
-        margin: 0 auto;
-      }
-    }
-  }
-  // TODO prevent link on button and create a front js to get url from button
-  &:hover {
-    .book-card-cover {
-      .fav-link {
-        right: 5px;
-        opacity: 1;
-      }
-    }
-  }
 }

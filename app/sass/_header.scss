@@ -6,12 +6,16 @@ header {
 
   .nav {
     .navlist {
+      width: 100%;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       .navlist-item {
-        & > a {
+        a {
           @include primary-font(400);
           color: $colored-light;
+          &:after {
+            display: none;
+          }
         }
         &--main {
           flex-grow: 1;
