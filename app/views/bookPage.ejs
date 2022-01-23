@@ -17,12 +17,12 @@
           </div>
           <div class="book-card-author">
             <h4>
-              <%= book.author_f_name %> <%= book.author_l_name %>
+              <%= book.author.fullname %>
             </h4>
           </div>
           <div class="book-card-edition">
             <h5>
-              <%= book.edition_name %>
+              <%= book.edition.name %>
             </h5>
           </div>
         </div>
@@ -34,19 +34,26 @@
         </div>
         <div class="book-infos-bloc">
           <span class="book-infos-bloc-label">Auteur⸱e</span>
-          <span class="book-infos-bloc-value"><%= book.author_f_name %> <%= book.author_l_name %></span>
+          <span class="book-infos-bloc-value"><%= book.author.fullname %></span>
         </div>
         <div class="book-infos-bloc">
           <span class="book-infos-bloc-label">Année de parution</span>
-          <span class="book-infos-bloc-value"><%= book.par_year %></span>
+          <span class="book-infos-bloc-value"><%= book.year %></span>
         </div>
         <div class="book-infos-bloc">
           <span class="book-infos-bloc-label">Catégorie</span>
-          <span class="book-infos-bloc-value"><%= book.category_name %></span>
+          <!-- For each category -->
+          <% for(const category of book.categories) { %>
+          <span class="book-infos-bloc-value"><%= category.name %></span>
+          <% } %>
         </div>
         <div class="book-infos-bloc">
           <span class="book-infos-bloc-label">Maison d'édition</span>
-          <span class="book-infos-bloc-value"><%= book.edition_name %></span>
+          <span class="book-infos-bloc-value"><%= book.edition.name %></span>
+        </div>
+        <div class="book-infos-bloc">
+          <span class="book-infos-bloc-label">Ce livre a </span>
+          <span class="book-infos-bloc-value"><%= book.comments.length %> commentaires</span>
         </div>
       </div>
       <div class="book-infos book-abstract">

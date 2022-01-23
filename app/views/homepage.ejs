@@ -7,6 +7,7 @@
   <main class="homepage">
     <h2><%= title %></h2>
     <div class="books-list">
+      <!-- For each book -->
       <% for(book of books) { %>
       <a class="book-card-link" href="/book/<%= book.id %>">
         <article class="book-card">
@@ -24,12 +25,12 @@
             </div>
             <div class="book-card-author">
               <h4>
-                <%= book.author_f_name %> <%= book.author_l_name %>
+                <%= book.author.fullname %>
               </h4>
             </div>
             <div class="book-card-edition">
               <h5>
-                <%= book.edition_name %>
+                <%= book.edition.name %>
               </h5>
             </div>
           </div>

@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
+const userMiddleware = require('./app/middlewares/user');
 const router = require('./app/router');
 
 const PORT = process.env.PORT || 3000;
@@ -9,6 +10,8 @@ const app = express();
 
 app.set('views', './app/views');
 app.set('view engine', 'ejs');
+
+app.use(express.static('public'));
 
 app.use(express.urlencoded({extended: true}));
 
@@ -23,8 +26,7 @@ app.use(session({
   }
 }));
 
-app.use(express.static('public'));
-
+app.use(userMiddleware);
 app.use(router);
 
 app.use((req, res) => {

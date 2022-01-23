@@ -1,38 +1,45 @@
-const dataMapper = require('../dataMapper');
-
+const {
+  Book
+} = require('../models');
 
 const mainController = {
+  // Home page
   homePage: async (_req, res, next) => {
     try {
-      const books = await dataMapper.getAllBooks();
+      const books = await Book.findAll({
+        include: ['author', 'edition']
+      });
       if(books) {
         res.render('homepage', {
-          books, 
+          books,
           title: 'Tous mes livres <3'
         });
       } else {
         next();
       }
-    } catch (error) {
-      console.error('Error:', error);
-      res.status(500).send('There is an error 500!');
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).send('There is an error 500:', err);
     }
   },
-  
+  // Book page
   bookDetail: async (req, res, next) => {
     const id = req.params.id;
     try {
-      const book = await dataMapper.getOneBook(id);
-      if(book) {
+      const book = await Book.findByPk(id, {
+        include: ['author', 'edition', 'categories', 'comments']
+      });
+      if(book){
         res.render('bookPage', {
           book
         });
       } else {
         next();
       }
-    } catch (error) {
-      console.error('Error:', error);
-      res.status(500).send('There is an error 500!');
+      
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).send('There is an error 500:', err);
     }
   }
 };
