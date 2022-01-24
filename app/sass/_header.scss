@@ -13,8 +13,17 @@ header {
         a {
           @include primary-font(400);
           color: $colored-light;
+          & > .user-account-name {
+            margin-left: calc( $base-space * .5);
+          }
           &:after {
             display: none;
+          }
+        }
+        .dropdown-menu-dark {
+          background-color: darken($secondary-color, 20);
+          .dropdown-item.active, .dropdown-item:active {
+            background-color: $primary-color;
           }
         }
         &--main {
