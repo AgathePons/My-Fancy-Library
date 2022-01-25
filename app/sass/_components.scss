@@ -117,10 +117,6 @@
   background-image: linear-gradient(to top right, $colored-dark, $secondary-color);
   border-radius: .3rem;
   border: 1px solid $colored-light;
-  .form-error {
-    @include primary-font(700);
-    color: $error-color;
-  }
   .btn-submit {
     position: relative;
     width: 100%;

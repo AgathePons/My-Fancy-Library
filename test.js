@@ -26,7 +26,7 @@ const bookWithCategories = async (id) => {
   const book = await Book.findByPk(id, {
     include: 'categories'
   });
-  console.log('------------------------')
+  console.log('------------------------');
   console.log(`${book.title} has ${book.categories.length} categories:`);
   for(const category of book.categories) {
     console.log(category.name);

@@ -19,5 +19,7 @@ router.use('/admin', adminMiddleware);
 router.get('/admin', adminController.adminPage);
 //TODO edit/delete
 router.get('/admin/addCategory', adminController.addCategoryPage);
+router.post('/admin/addCategory', adminController.addCategoryAction);
+router.get('/admin/editCategory', adminController.editCategoryPage);
 
 module.exports = router;

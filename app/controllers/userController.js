@@ -49,12 +49,15 @@ const userController = {
         mail: req.body.mail,
         password: encryptedPassword
       });
-      newUser.save();
 
       // create locals to signin page
-      //! set password to null instead of delete
-      newUser.password = null;
-      req.session.user = newUser;
+      req.session.user = {
+        id: newUser.id,
+        firstname: newUser.firstname,
+        lastname: newUser.lastname,
+        mail: newUser.mail,
+        role: newUser.role
+      };
       res.redirect('/');
 
     } catch (err) {
@@ -73,7 +76,8 @@ const userController = {
       const user = await User.findOne({
         where: {
           mail: req.body.mail
-        }
+        },
+        //TODO regarder raw: true (transforme l'instance de class en objet ?)
       });
       if (!user) {
         return res.render('signin', {
@@ -90,17 +94,14 @@ const userController = {
         });
       }
       // if ok
-      //! why delete does not work?
-      delete user.password;
-      //! set to null instead of delete
-      user.password = null;
-      //console.log('user pswd:', user.password);
-      //console.log('user:', user);
-      req.session.user = user;
-      //delete req.session.user.password;
-      //console.log('session pswd:', req.session.user.password);
-      //console.log('session:', req.session.user);
-
+      req.session.user = {
+        id: user.id,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        mail: user.mail,
+        role: user.role
+      };
+      
       res.redirect('/');
     } catch (err) {
       console.error('Error:', err);

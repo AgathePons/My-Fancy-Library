@@ -23,3 +23,12 @@ h2 {
   @include primary-font(200);
   font-size: 1.5rem;
 }
+
+.message-error {
+  @include primary-font(700);
+  color: $error-color;
+}
+.message-info {
+  @include primary-font(700);
+  color: $info-color;
+}
