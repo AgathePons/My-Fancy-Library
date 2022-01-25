@@ -7,7 +7,13 @@
   <main class="admin-page">
     <h2><%= title %></h2>
 
-    <%- include('partials/adminNav') %>
+    <div class="admin-content">
+      <%- include('partials/adminNav') %>
+      <p>
+        Bienvenue <%= locals.user.firstname %>, archiviste suprême de la <strong>Bibliothèque Fantasque.</strong>
+      </p>
+    </div>
+    
     
   </main>
   <%- include('partials/footer') %>

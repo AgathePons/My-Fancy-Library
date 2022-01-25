@@ -1,0 +1,10 @@
+.admin-page {
+  .admin-content {
+    background-color: $background-light;
+    padding: 0;
+    border-radius: .3rem;
+    & > [class^="message-"] {
+      margin: $base-space;
+    }
+  }
+}

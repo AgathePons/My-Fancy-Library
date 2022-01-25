@@ -8,10 +8,19 @@ const adminController = {
       title: 'Administration ✨'
     });
   },
-  editCategoryPage: (_req, res) => {
-    res.render('adminCategoryEdit', {
-      title: 'Gérer les genres littéraires ✨'
-    });
+  editCategoryPage: async (_req, res) => {
+    try {
+      const categories = await Category.findAll({
+        include: 'books'
+      });
+      res.render('adminCategoryEdit', {
+        title: 'Gérer les genres littéraires ✨',
+        categories
+      });
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).send('There is an error 500:', err);
+    }
   },
   addCategoryPage: (_req, res) => {
     res.render('adminCategoryAdd', {
@@ -19,8 +28,6 @@ const adminController = {
     });
   },
   addCategoryAction: async (req, res) => {
-    //!
-    console.log(req.body);
     try {
       // check if category already exists
       const category = await Category.findOne({

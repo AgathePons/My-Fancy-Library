@@ -117,6 +117,20 @@
   background-image: linear-gradient(to top right, $colored-dark, $secondary-color);
   border-radius: .3rem;
   border: 1px solid $colored-light;
+  .input-group {
+    .input-group-text {
+      background-image: linear-gradient(to bottom left, $background-light, $background-medium);
+      border: 1px solid $colored-light;
+      & > svg {
+        color: darken($secondary-color, 35);
+      }
+    }
+    .form-control {
+      border: 1px solid $colored-light;
+      background-color: $background-light;
+      @include primary-font(400);
+    }
+  }
   .btn-submit {
     position: relative;
     width: 100%;
@@ -125,6 +139,7 @@
     background: linear-gradient(to right, $primary-color, $secondary-color);
     @include primary-font(700);
     color: $colored-light;
+    border: 1px solid $colored-light;
     z-index: 1;
     &:before {
       position: absolute;
@@ -146,3 +161,33 @@
     }
   }
 }
+
+// Sub-nav
+.sub-nav {
+  padding: calc( $base-space * .5);
+  border-radius: .3rem;
+  border: 1px solid $colored-light;
+  background-image: linear-gradient(to top right, $colored-dark, $secondary-color);;
+  .nav-pills {
+    .nav-link {
+      @include primary-font(500);
+      color: lighten($background-medium, 20);
+      &.active {
+        background-color: lighten($background-medium, 20);
+        color: darken($secondary-color, 35);
+      }
+    }
+  }
+  .dropdown-menu {
+    background-color: darken($secondary-color, 20);
+    .dropdown-item {
+      @include primary-font(400);
+      color: $colored-light;
+      &:active {
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+// Category card
