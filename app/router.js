@@ -21,5 +21,7 @@ router.get('/admin', adminController.adminPage);
 router.get('/admin/addCategory', adminController.addCategoryPage);
 router.post('/admin/addCategory', adminController.addCategoryAction);
 router.get('/admin/editCategory', adminController.editCategoryPage);
+router.post('/admin/editCategory/:id', adminController.editCategoryAction);
+router.get('/admin/deleteCategory/:id', adminController.deleteCategoryAction);
 
 module.exports = router;
