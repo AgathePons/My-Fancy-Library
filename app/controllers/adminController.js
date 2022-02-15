@@ -227,6 +227,87 @@ const adminController = {
       res.status(500).send('There is an error 500:', err);
     }
   },
+  editEditionAction : async (req, res) => {
+    try {
+      // check if id category exists
+      const edition = await Edition.findByPk(req.params.id);
+      const prevName = edition.name;
+      if (!edition) {
+        return res.render('adminEditionEdit', {
+          title: 'Ooopsi 😱',
+          error: `La maison d'édition ayant "${req.params.id}" pour id n'existe pas !`
+        });
+      }
+      if(req.body.name) {
+        edition.name = req.body.name;
+      }
+      await edition.save();
+      const editions = await Edition.findAll();
+      return res.render('adminEditionEdit', {
+        title: 'Gérer les maison d\'édition ✨',
+        info: `La maison d'édition ${prevName} a bien été transformée en ${edition.name} !`,
+        editions
+      });
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).send('There is an error 500:', err);
+    }
+  },
+  deleteEditionAction: async (req, res) => {
+    try {
+      // check if id category exists
+      const edition = await Edition.findByPk(req.params.id);
+      if (!edition) {
+        return res.render('adminEditionEdit', {
+          title: 'Ooopsi 😱',
+          error: `La maison d'édition ayant "${req.params.id}" pour id n'existe pas !`
+        });
+      }
+      await edition.destroy();
+      const editions = await Edition.findAll();
+      return res.render('adminEditionEdit', {
+        title: 'Gérer les maison d\'édition ✨',
+        info: `La maison d'édition ${edition.name} a bien été jeté dans la grande poubelle littéraire !`,
+        editions
+      });
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).send('There is an error 500:', err);
+    }
+  },
+  addEditionPage: (_req, res) => {
+    res.render('adminEditionAdd', {
+      title: 'Ajouter une maison d\'édition ✨'
+    });
+  },
+  addEditionAction: async (req, res) => {
+    try {
+      // check if edition already exists
+      const edition = await Edition.findOne({
+        where: {
+          name: req.body.name
+        }
+      });
+      if (edition) {
+        return res.render('adminEditionAdd', {
+          title: 'Ooopsi 😱',
+          error: 'Cette maison d\'édition existe déjà !'
+        });
+      }
+      const newEdition = await Edition.create({
+        name: req.body.name
+      });
+      const editions = await Edition.findAll();
+      return res.render('adminEditionEdit', {
+        title: 'Gérer les maisons d\'édition ✨',
+        info: `La maison d'édition ${newEdition.name} a bien été inventé !`,
+        editions
+      });
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).send('There is an error 500:', err);
+    }
+  }
   // #endregion Edition
 };
 

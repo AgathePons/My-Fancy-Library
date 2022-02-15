@@ -30,7 +30,11 @@ router.get('/admin/editCategory', adminController.editCategoryPage);
 router.post('/admin/editCategory/:id', adminController.editCategoryAction);
 router.get('/admin/deleteCategory/:id', adminController.deleteCategoryAction);
 // Edition
+router.get('/admin/addEdition', adminController.addEditionPage);
+router.post('/admin/addEdition', adminController.addEditionAction);
 router.get('/admin/editEdition', adminController.editEditionPage);
+router.post('/admin/editEdition/:id', adminController.editEditionAction);
+router.get('/admin/deleteEdition/:id', adminController.deleteEditionAction);
 
 
 module.exports = router;
