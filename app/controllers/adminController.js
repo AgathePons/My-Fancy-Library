@@ -1,5 +1,8 @@
+const { Op } = require('sequelize');
 const {
-  Category
+  Author,
+  Category,
+  Edition
 } = require('../models/');
 
 const adminController = {
@@ -8,6 +11,111 @@ const adminController = {
       title: 'Administration ✨'
     });
   },
+  // #region Author
+  editAuthorPage: async (_req, res) => {
+    try {
+      const authors = await Author.findAll({
+        include: 'books'
+      });
+      res.render('adminAuthorEdit', {
+        title: 'Gérer les auteur·e·s ✨',
+        authors
+      });
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).send('There is an error 500:', err);
+    }
+  },
+  editAuthorAction : async (req, res) => {
+    try {
+      // check if id author exists
+      const author = await Author.findByPk(req.params.id);
+      const prevName = author.fullname;
+      if (!author) {
+        return res.render('adminAuthorEdit', {
+          title: 'Ooopsi 😱',
+          error: `L'auteur·e ayant "${req.params.id}" pour id n'existe pas !`
+        });
+      }
+      if(req.body.firstname) {
+        author.firstname = req.body.firstname;
+      }
+      if(req.body.lastname) {
+        author.lastname = req.body.lastname;
+      }
+      await author.save();
+      const authors = await Author.findAll();
+      return res.render('adminAuthorEdit', {
+        title: 'Gérer les auteur·e·s ✨',
+        info: `L'auteur·e ${prevName} a bien été transformé en ${author.fullname} !`,
+        authors
+      });
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).send('There is an error 500:', err);
+    }
+  },
+  deleteAuthorAction: async (req, res) => {
+    try {
+      // check if id author exists
+      const author = await Author.findByPk(req.params.id);
+      if (!author) {
+        return res.render('adminAuthorEdit', {
+          title: 'Ooopsi 😱',
+          error: `L'auteur·e ayant "${req.params.id}" pour id n'existe pas !`
+        });
+      }
+      await author.destroy();
+      const authors = await Author.findAll();
+      return res.render('adminAuthorEdit', {
+        title: 'Gérer les auteur·e·s ✨',
+        info: `L'auteur·e ${author.fullname} a bien été jeté dans la grande poubelle littéraire !`,
+        authors
+      });
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).send('There is an error 500:', err);
+    }
+  },
+  addAuthorPage: (_req, res) => {
+    res.render('adminAuthorAdd', {
+      title: 'Ajouter un·e auteur·e ✨'
+    });
+  },
+  addAuthorAction: async (req, res) => {
+    try {
+      // check if author already exists
+      const author = await Author.findOne({
+        where: {
+          [Op.and]: [
+            {firstname: req.body.firstname},
+            {lastname: req.body.lastname}
+          ]
+        }
+      });
+      if (author) {
+        return res.render('adminAuthorAdd', {
+          title: 'Ooopsi 😱',
+          error: 'Cet·te auteur·e existe déjà !'
+        });
+      }
+      const newAuthor = await Author.create({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname
+      });
+      const authors = await Author.findAll();
+      return res.render('adminAuthorEdit', {
+        title: 'Gérer les auteur·e·s ✨',
+        info: `L'auteur·e ${newAuthor.fullname} a bien été inventé !`,
+        authors
+      });
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).send('There is an error 500:', err);
+    }
+  },
+  // #endregion Author
+  // #region Category
   editCategoryPage: async (_req, res) => {
     try {
       const categories = await Category.findAll({
@@ -102,7 +210,24 @@ const adminController = {
       console.error('Error:', err);
       res.status(500).send('There is an error 500:', err);
     }
-  }
+  },
+  // #endregion Category
+  // #region Edition
+  editEditionPage: async (_req, res) => {
+    try {
+      const editions = await Edition.findAll({
+        include: 'books'
+      });
+      res.render('adminEditionEdit', {
+        title: 'Gérer les genres maisons d\'édition ✨',
+        editions
+      });
+    } catch (err) {
+      console.error('Error:', err);
+      res.status(500).send('There is an error 500:', err);
+    }
+  },
+  // #endregion Edition
 };
 
 module.exports = adminController;

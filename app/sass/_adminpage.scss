@@ -6,5 +6,30 @@
     & > [class^="message-"] {
       margin: $base-space;
     }
+    .card {
+      background-image: linear-gradient(to top right, $colored-dark, $secondary-color);
+      border-radius: .3rem;
+      border: 1px solid $colored-light;
+      @include primary-font(400);
+      color: $colored-light;
+      .card-header {
+        border-bottom: 1px solid rgba($colored-light, .2);
+        .card-title {
+          font-weight: 700;
+          margin-bottom: 0;
+        }
+      }
+      .card-body {
+        .btn-edit {
+          border: 1px solid $colored-light;
+          background: linear-gradient(to right, darken($primary-color, 10), darken($secondary-color, 10));
+        }
+        .btn-delete {
+          margin-left: calc( $base-space * 2 );
+          border: 1px solid $colored-light;
+          background-color: lighten($colored-dark, 5);
+        }
+      }
+    }
   }
 }

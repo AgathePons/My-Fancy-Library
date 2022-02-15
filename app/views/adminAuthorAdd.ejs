@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+
+<body>
+  <%- include('partials/header') %>
+  <main class="admin-page">
+    <h2><%= title %></h2>
+    <div class="admin-content">
+      <%- include('partials/adminNav') %>
+      <form class="form-file" action="/admin/addAuthor" method="POST">
+        <!-- error message -->
+        <% if(locals.error) { %>
+        <div class="message-error">
+          <%= error %>
+        </div>
+        <% } %>
+        <div class="input-group">
+          <span class="input-group-text" id="firstname-addon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            </svg>
+          </span>
+          <input type="text" class="form-control" name="firstname" placeholder="George RR" aria-label="Firstname"
+            aria-describedby="name-addon" required>
+        </div>
+        <div class="input-group">
+          <span class="input-group-text" id="lastname-addon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            </svg>
+          </span>
+          <input type="text" class="form-control" name="lastname" placeholder="Despentes" aria-label="Lastname"
+            aria-describedby="name-addon" required>
+        </div>
+        <button type="submit" class="btn-submit">Submit</button>
+      </form>
+    </div>
+
+  </main>
+  <%- include('partials/footer') %>
+
+</body>
+
+</html>

@@ -162,6 +162,15 @@
   }
 }
 
+// Modals
+.modal-content {
+  .modal-header {
+    .modal-title {
+      @include primary-font(700);
+    }
+  }
+}
+
 // Sub-nav
 .sub-nav {
   padding: calc( $base-space * .5);
