@@ -1,4 +1,4 @@
-# Infos sur la base de projet
+# Infos le projet
 
 **Pour installer les dependances du projet**
 
@@ -29,6 +29,10 @@ npm run sass
 **Postgres SQL**
 
 La db tourne sur postgresql
+
+**Sequelize**
+
+Le projet utilise l'ORM Sequelize
 
 **SASS**
 
